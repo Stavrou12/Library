@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>welcome librarian</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+        <script src="libdata.js"></script>
+        <script src="addbook.js"></script>
+        <link rel="stylesheet" type="text/css" href="librcss.css">
+    </head>
+    <body>
+        <button class="button" id="logout-butt" onclick="logout();">Logout</button>
+        <button class="button" id="change-data-butt" onclick="req_show_data2();">See Data</button>
+        <form id="formlib" style="display:none;" onsubmit="update1();return false;">
+            <fieldset>
+                <legend>
+                    Συμπληρώστε την φόρμα ανανεωσης στοιχειων:
+                </legend>
+                <label for="txtUserName">UserName:</label>
+                <input type="text" id="txtUserName" name="username" readonly>
+                <span id="requsername"></span>
+                <br>
+                <div id="Mail">
+                    <label for="txtEmail">E-mail:
+                    </label>
+                    <input type="email"  readonly id="txtEmail" name="email" onchange="EMAIL()">
+                    <span id="reqemail"></span>
+                </div>
+                <div id="pass">
+                    <label>Password:
+                    </label>
+                    <input id="p1" type="password" name="password" pattern="(?=.*[A-Za-z])(?=.*[@$!%*#?&])(?=.*[0-9]).{8,12}">
+                    <button class="button" type="button" onclick="HideView()">Show/Hide</button><input class="button" type="button" onclick="checkStrength()" id="strbut" value="Check Strength"/>
+                </div>
+                <p id="strengthmes"></p>
+                <div id="pass2">
+                    <label>Επιβεβαίωση password:
+                    </label>
+                    <input id="p2" type="password" name="password2" pattern="(?=.*[A-Za-z])(?=.*[@$!%*#?&])(?=.*[0-9]).{8,12}">
+                    <button class="button" type="button" onclick="HideView2()">Show/Hide</button>
+                </div>
+                <button class="button" type="button" onclick="checkPass()">Check</button>
+                <p id="message"></p>
+                <br>
+                <label for="txtName">Όνομα:</label>
+                <input type="text" id="txtName" name="firstname" minlength="3" maxlength="30" size="40">
+                <br>
+                <label for="txtName1">Επώνυμο:</label>
+                <input type="text" id="txtName1" name="lastname" minlength="3" maxlength="30" size="40">
+                <br>
+                <label for="txtDate">Ημερομηνία Γέννησης:</label>
+                <input type="date" id="txtDate" name="birthdate" min="1920-01-01" max="2006-12-31" value="1980-01-01">
+                <br>
+            </fieldset>
+            <fieldset id="field2">
+                <legend>
+                    Προαιρετικά:
+                </legend>
+                <br>
+                <label for="txtUrl">Προσωπική σελίδα :
+                </label>
+                <input type="text" id="txtUrl" name="personalpage">
+                <br>
+                <label>Χώρα:
+                </label>
+                <select id="country" name="country">
+                    <option>select country</option>
+                    <option value="AF">Afghanistan</option>
+                    <option value="AX">Aland Islands</option>
+                    <option value="AL">Albania</option>
+                    <option value="DZ">Algeria</option>
+                    <option value="AS">American Samoa</option>
+                    <option value="AD">Andorra</option>
+                    <option value="AO">Angola</option>
+                    <option value="AI">Anguilla</option>
+                    <option value="AQ">Antarctica</option>
+                    <option value="AG">Antigua and Barbuda</option>
+                    <option value="AR">Argentina</option>
+                    <option value="AM">Armenia</option>
+                    <option value="AW">Aruba</option>
+                    <option value="AU">Australia</option>
+                    <option value="AT">Austria</option>
+                    <option value="AZ">Azerbaijan</option>
+                    <option value="BS">Bahamas</option>
+                    <option value="BH">Bahrain</option>
+                    <option value="BD">Bangladesh</option>
+                    <option value="BB">Barbados</option>
+                    <option value="BY">Belarus</option>
+                    <option value="BE">Belgium</option>
+                    <option value="BZ">Belize</option>
+                    <option value="BJ">Benin</option>
+                    <option value="BM">Bermuda</option>
+                    <option value="BT">Bhutan</option>
+                    <option value="BO">Bolivia</option>
+                    <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                    <option value="BA">Bosnia and Herzegovina</option>
+                    <option value="BW">Botswana</option>
+                    <option value="BV">Bouvet Island</option>
+                    <option value="BR">Brazil</option>
+                    <option value="IO">British Indian Ocean Territory</option>
+                    <option value="BN">Brunei Darussalam</option>
+                    <option value="BG">Bulgaria</option>
+                    <option value="BF">Burkina Faso</option>
+                    <option value="BI">Burundi</option>
+                    <option value="KH">Cambodia</option>
+                    <option value="CM">Cameroon</option>
+                    <option value="CA">Canada</option>
+                    <option value="CV">Cape Verde</option>
+                    <option value="KY">Cayman Islands</option>
+                    <option value="CF">Central African Republic</option>
+                    <option value="TD">Chad</option>
+                    <option value="CL">Chile</option>
+                    <option value="CN">China</option>
+                    <option value="CX">Christmas Island</option>
+                    <option value="CC">Cocos (Keeling) Islands</option>
+                    <option value="CO">Colombia</option>
+                    <option value="KM">Comoros</option>
+                    <option value="CG">Congo</option>
+                    <option value="CD">Congo, Democratic Republic of the Congo</option>
+                    <option value="CK">Cook Islands</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="CI">Cote D'Ivoire</option>
+                    <option value="HR">Croatia</option>
+                    <option value="CU">Cuba</option>
+                    <option value="CW">Curacao</option>
+                    <option value="CY">Cyprus</option>
+                    <option value="CZ">Czech Republic</option>
+                    <option value="DK">Denmark</option>
+                    <option value="DJ">Djibouti</option>
+                    <option value="DM">Dominica</option>
+                    <option value="DO">Dominican Republic</option>
+                    <option value="EC">Ecuador</option>
+                    <option value="EG">Egypt</option>
+                    <option value="SV">El Salvador</option>
+                    <option value="GQ">Equatorial Guinea</option>
+                    <option value="ER">Eritrea</option>
+                    <option value="EE">Estonia</option>
+                    <option value="ET">Ethiopia</option>
+                    <option value="FK">Falkland Islands (Malvinas)</option>
+                    <option value="FO">Faroe Islands</option>
+                    <option value="FJ">Fiji</option>
+                    <option value="FI">Finland</option>
+                    <option value="FR">France</option>
+                    <option value="GF">French Guiana</option>
+                    <option value="PF">French Polynesia</option>
+                    <option value="TF">French Southern Territories</option>
+                    <option value="GA">Gabon</option>
+                    <option value="GM">Gambia</option>
+                    <option value="GE">Georgia</option>
+                    <option value="DE">Germany</option>
+                    <option value="GH">Ghana</option>
+                    <option value="GI">Gibraltar</option>
+                    <option value="GR">Greece</option>
+                    <option value="GL">Greenland</option>
+                    <option value="GD">Grenada</option>
+                    <option value="GP">Guadeloupe</option>
+                    <option value="GU">Guam</option>
+                    <option value="GT">Guatemala</option>
+                    <option value="GG">Guernsey</option>
+                    <option value="GN">Guinea</option>
+                    <option value="GW">Guinea-Bissau</option>
+                    <option value="GY">Guyana</option>
+                    <option value="HT">Haiti</option>
+                    <option value="HM">Heard Island and Mcdonald Islands</option>
+                    <option value="VA">Holy See (Vatican City State)</option>
+                    <option value="HN">Honduras</option>
+                    <option value="HK">Hong Kong</option>
+                    <option value="HU">Hungary</option>
+                    <option value="IS">Iceland</option>
+                    <option value="IN">India</option>
+                    <option value="ID">Indonesia</option>
+                    <option value="IR">Iran, Islamic Republic of</option>
+                    <option value="IQ">Iraq</option>
+                    <option value="IE">Ireland</option>
+                    <option value="IM">Isle of Man</option>
+                    <option value="IL">Israel</option>
+                    <option value="IT">Italy</option>
+                    <option value="JM">Jamaica</option>
+                    <option value="JP">Japan</option>
+                    <option value="JE">Jersey</option>
+                    <option value="JO">Jordan</option>
+                    <option value="KZ">Kazakhstan</option>
+                    <option value="KE">Kenya</option>
+                    <option value="KI">Kiribati</option>
+                    <option value="KP">Korea, Democratic People's Republic of</option>
+                    <option value="KR">Korea, Republic of</option>
+                    <option value="XK">Kosovo</option>
+                    <option value="KW">Kuwait</option>
+                    <option value="KG">Kyrgyzstan</option>
+                    <option value="LA">Lao People's Democratic Republic</option>
+                    <option value="LV">Latvia</option>
+                    <option value="LB">Lebanon</option>
+                    <option value="LS">Lesotho</option>
+                    <option value="LR">Liberia</option>
+                    <option value="LY">Libyan Arab Jamahiriya</option>
+                    <option value="LI">Liechtenstein</option>
+                    <option value="LT">Lithuania</option>
+                    <option value="LU">Luxembourg</option>
+                    <option value="MO">Macao</option>
+                    <option value="MK">Macedonia, the Former Yugoslav Republic of</option>
+                    <option value="MG">Madagascar</option>
+                    <option value="MW">Malawi</option>
+                    <option value="MY">Malaysia</option>
+                    <option value="MV">Maldives</option>
+                    <option value="ML">Mali</option>
+                    <option value="MT">Malta</option>
+                    <option value="MH">Marshall Islands</option>
+                    <option value="MQ">Martinique</option>
+                    <option value="MR">Mauritania</option>
+                    <option value="MU">Mauritius</option>
+                    <option value="YT">Mayotte</option>
+                    <option value="MX">Mexico</option>
+                    <option value="FM">Micronesia, Federated States of</option>
+                    <option value="MD">Moldova, Republic of</option>
+                    <option value="MC">Monaco</option>
+                    <option value="MN">Mongolia</option>
+                    <option value="ME">Montenegro</option>
+                    <option value="MS">Montserrat</option>
+                    <option value="MA">Morocco</option>
+                    <option value="MZ">Mozambique</option>
+                    <option value="MM">Myanmar</option>
+                    <option value="NA">Namibia</option>
+                    <option value="NR">Nauru</option>
+                    <option value="NP">Nepal</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="AN">Netherlands Antilles</option>
+                    <option value="NC">New Caledonia</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="NI">Nicaragua</option>
+                    <option value="NE">Niger</option>
+                    <option value="NG">Nigeria</option>
+                    <option value="NU">Niue</option>
+                    <option value="NF">Norfolk Island</option>
+                    <option value="MP">Northern Mariana Islands</option>
+                    <option value="NO">Norway</option>
+                    <option value="OM">Oman</option>
+                    <option value="PK">Pakistan</option>
+                    <option value="PW">Palau</option>
+                    <option value="PS">Palestinian Territory, Occupied</option>
+                    <option value="PA">Panama</option>
+                    <option value="PG">Papua New Guinea</option>
+                    <option value="PY">Paraguay</option>
+                    <option value="PE">Peru</option>
+                    <option value="PH">Philippines</option>
+                    <option value="PN">Pitcairn</option>
+                    <option value="PL">Poland</option>
+                    <option value="PT">Portugal</option>
+                    <option value="PR">Puerto Rico</option>
+                    <option value="QA">Qatar</option>
+                    <option value="RE">Reunion</option>
+                    <option value="RO">Romania</option>
+                    <option value="RU">Russian Federation</option>
+                    <option value="RW">Rwanda</option>
+                    <option value="BL">Saint Barthelemy</option>
+                    <option value="SH">Saint Helena</option>
+                    <option value="KN">Saint Kitts and Nevis</option>
+                    <option value="LC">Saint Lucia</option>
+                    <option value="MF">Saint Martin</option>
+                    <option value="PM">Saint Pierre and Miquelon</option>
+                    <option value="VC">Saint Vincent and the Grenadines</option>
+                    <option value="WS">Samoa</option>
+                    <option value="SM">San Marino</option>
+                    <option value="ST">Sao Tome and Principe</option>
+                    <option value="SA">Saudi Arabia</option>
+                    <option value="SN">Senegal</option>
+                    <option value="RS">Serbia</option>
+                    <option value="CS">Serbia and Montenegro</option>
+                    <option value="SC">Seychelles</option>
+                    <option value="SL">Sierra Leone</option>
+                    <option value="SG">Singapore</option>
+                    <option value="SX">Sint Maarten</option>
+                    <option value="SK">Slovakia</option>
+                    <option value="SI">Slovenia</option>
+                    <option value="SB">Solomon Islands</option>
+                    <option value="SO">Somalia</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="GS">South Georgia and the South Sandwich Islands</option>
+                    <option value="SS">South Sudan</option>
+                    <option value="ES">Spain</option>
+                    <option value="LK">Sri Lanka</option>
+                    <option value="SD">Sudan</option>
+                    <option value="SR">Suriname</option>
+                    <option value="SJ">Svalbard and Jan Mayen</option>
+                    <option value="SZ">Swaziland</option>
+                    <option value="SE">Sweden</option>
+                    <option value="CH">Switzerland</option>
+                    <option value="SY">Syrian Arab Republic</option>
+                    <option value="TW">Taiwan, Province of China</option>
+                    <option value="TJ">Tajikistan</option>
+                    <option value="TZ">Tanzania, United Republic of</option>
+                    <option value="TH">Thailand</option>
+                    <option value="TL">Timor-Leste</option>
+                    <option value="TG">Togo</option>
+                    <option value="TK">Tokelau</option>
+                    <option value="TO">Tonga</option>
+                    <option value="TT">Trinidad and Tobago</option>
+                    <option value="TN">Tunisia</option>
+                    <option value="TR">Turkey</option>
+                    <option value="TM">Turkmenistan</option>
+                    <option value="TC">Turks and Caicos Islands</option>
+                    <option value="TV">Tuvalu</option>
+                    <option value="UG">Uganda</option>
+                    <option value="UA">Ukraine</option>
+                    <option value="AE">United Arab Emirates</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="US">United States</option>
+                    <option value="UM">United States Minor Outlying Islands</option>
+                    <option value="UY">Uruguay</option>
+                    <option value="UZ">Uzbekistan</option>
+                    <option value="VU">Vanuatu</option>
+                    <option value="VE">Venezuela</option>
+                    <option value="VN">Viet Nam</option>
+                    <option value="VG">Virgin Islands, British</option>
+                    <option value="VI">Virgin Islands, U.s.</option>
+                    <option value="WF">Wallis and Futuna</option>
+                    <option value="EH">Western Sahara</option>
+                    <option value="YE">Yemen</option>
+                    <option value="ZM">Zambia</option>
+                    <option value="ZW">Zimbabwe</option>
+                </select>
+                <br>
+                <label for="txtCity">Πόλη:</label>
+                <input type="text" id="txtCity" name="city" minlength="3" maxlength="50" size="60">
+                <br>
+                <label id="textCity" for="txtCityNumber">Διεύθυνση βιβλιοθηκης:</label>
+                <input type="text" id="txtCityNumber" name="address" minlength="5" maxlength="50" size="60">
+                <button class="button" id="checkcity" type="button" onclick="loadDoc()">Check
+                </button>
+                <p id="map"></p>
+
+                <div id="showlonlat">
+                    <label id="lonn" for="lon">lon:</label>
+                    <input  type="text" id="lon" name="lon"><!-- comment -->
+                    <label id="latt" for="lat">lat:</label>
+                    <input type="text" id="lat" name="lat">
+                </div>
+                <br>
+                <label for="txtTel">Τηλέφωνο:
+                </label>
+                <input type="tel" id="txtTel" name="telephone" size="10" minlength="10" maxlength="10">
+                <!--  <label>Όνομα Βιβλιοθήκης:</label><input type="text" id="txtbiblonomar" name="libraryname" minlength="5" maxlength="30" size="40">
+                  <label>Πληροφορίες και ωράριο βιβλιοθήκης:</label><input type="text" id="wrariobibl"  name="libraryinfo">  -->
+            </fieldset>
+            <br>
+            <br>
+            <button class="button" id="save-butt2" type="submit">Ανανεωση στοιχειων</button>
+        </form>
+        <span id ="msg"></span>
+        <div id="Map" style="height:400px; width:400px"></div>
+        <script>
+            var markers = new OpenLayers.Layer.Markers("Markers");
+        </script>
+        <h1>Add a New Book</h1>
+        <button class = "button" id="NewBookBtn">Add a New Book</button>
+        <form id="NewBookForm" style="display: none;">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" pattern=".{10}|.{13}"  title="Isbn must be either 10 or 13 characters long." required onchange="ISBN()"><br><br>
+            <span id="reqisbn"></span>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required><br><br>
+
+            <label for="authors">Authors:</label>
+            <input type="text" id="authors" name="authors" required><br><br>
+
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre" required><br><br>
+
+            <label for="pages">Pages:</label>
+            <input type="number" id="pages" name="pages"  min="1" title="Pages must be > 0" required><br><br>
+
+            <label for="publicationyear">Publication Year:</label>
+            <input type="number" id="publicationyear" name="publicationyear" min="1200" title="Year must be from 1200 and above. " required><br><br>
+
+            <label for="url">URL:</label>
+            <input type="url" id="url" name="url" required pattern="https?://.*" title="Please enter a valid URL starting with 'http://' or 'https://'"><br><br>
+
+            <label for="photo">Photo:</label>
+            <input type="url" id="photo" name="photo" required pattern="https?://.*" title="Please enter a valid URL starting with 'http://' or 'https://'"><br><br>
+            <input class = "button" type="submit" id="submitbook" value="Add Book In books Table">
+        </form>
+        <p id="mes"></p>
+        <h1>Add a New Book in booksinlibraries table</h1>
+        <button class = "button" id="NewBookInLibBtn">Add a New Book in Lib</button>
+        <form id="NewBookLibForm" style="display: none;">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" pattern=".{10}|.{13}"  title="Isbn must be either 10 or 13 characters long." required onchange="ISBN2()"><br><br>
+            <span id="reqisbn2"></span>
+            <label for="library_id">Library_Id:</label>
+            <input type="text" id="library_id" name="library_id" required><br><br>
+            <label for="available">Available:</label>
+            <input type="text" id="available" name="available" required><br><br>
+            <input class = "button" type="submit" id ="submitbook2" value="Add Book In booksinlibraries Table">
+        </form>
+
+        <p id="mes2"></p>
+
+        <div class="footer">
+            <h1>Useful Links</h1>
+            <h2>Book Information</h2>
+            <ul>
+                <li><a href="https://www.goodreads.com/" class="link-white">Goodreads</a></li>
+                <li><a href="https://www.librarything.com/" class="link-white">LibraryThing</a></li>
+                <li><a href="https://www.amazon.com/books-used-books-textbooks/b/ref=nav_shopall_bo_t3?ie=UTF8&node=283155" class="link-white">Amazon</a></li>
+                <li><a href="https://www.literature-map.com/" class="link-white">Literature Map</a></li>
+                <li><a href="https://www.bookfinder.com/" class="link-white">BookFinder.com</a></li>
+                <li><a href="https://fivebooks.com/" class="link-white">Five Books</a></li>
+                <li><a href="https://www.cbr.com/" class="link-white">Comic Book Resources</a></li>
+                <li><a href="https://www.indiebound.org/indie-store-finder" class="link-white">IndieBound</a></li>
+                <li><a href="https://www.addall.com/" class="link-white">AddALL</a></li>
+                <li><a href="https://www.alibris.com/" class="link-white">Alibris</a></li>
+                <li><a href="http://onlinebooks.library.upenn.edu/search.html" class="link-white">UPenn's Online Books Page</a></li>
+                <li><a href="https://www.powells.com/" class="link-white">Powell's Books</a></li>
+            </ul>
+            <h2>University of Crete</h2>
+            <ul>
+                <li><a href="https://www.uoc.gr/" class="link-white">Official University of Crete Website</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/University_of_Crete" class="link-white">University of Crete - Wikipedia</a></li>
+                <li><a href="https://www.csd.uoc.gr/" class="link-white">Computer Science Department</a></li>
+                <li><a href="https://www.csd.uoc.gr/CSD/index.jsp?content=courses_catalog&openmenu=demoAcc3&lang=gr&course=94" class="link-white">HY359</a></li>
+            </ul>
+            <h1 id = "xx">ΧΡΗΣΤΕΣ</h1>
+            <div id="usernamesContainer"></div>
+        </div>
+
+    </body>
+</html>

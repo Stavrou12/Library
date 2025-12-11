@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>WELCOME ADMIN</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="adminjs.js"></script>
+        <script src="script3.js"></script>
+        <link rel="stylesheet" type="text/css" href="admincss.css">
+    </head>
+    <body>
+        <button class="button" id="removestudent" onclick="removestudent();">Διαγραφη ενος μαθητη</button>
+        <div id="st1" style="display:none">
+            <form id="dels">
+                <label for="stid">Select id of student to be removed:</label>
+                <input type="number" id="stid" name="user_id" onchange="remove()" min="1" max="1000000000">
+                <p id="msg"></p>
+            </form>
+        </div>
+        <br>
+        <form id="userListForm">
+            <input id = "butstu" type="submit" value="Get User List">
+        </form>
+        <div id="userList" style="display:none;"></div>
+        <script src="script.js"></script>
+        <button class="button" id="removelib" onclick="removelib()">Διαγραφη ενος βιβλιοθηκαριου</button>
+        <div id="lib1" style="display:none">
+            <form id="dell">
+                <label for="libl">Select id of librarian to be removed:</label>
+                <input type="number" id="lib1" name="library_id"
+                       min="1" max="1000000000" onchange="remove2()">
+                <p id="msg2"></p>
+            </form>
+        </div>
+        <br>
+        <form id="LibrarianListForm">
+            <input id ="butlib" type="submit" value="Get Librarian List">
+        </form>
+        <div id="LibList" style="display:none;"></div>
+        <script src="script2.js"></script>
+        <div id ="forcssstat">
+            <h1>Book Genre Statistics</h1>
+        <div id="genreSelector">
+            <label for="genre">Select Genre:</label>
+            <select id="genre" name="genre">
+                <option value="Fantasy">Fantasy</option>
+                <option value="Novel">Novel</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Romance">Romance</option>
+                <option value="Sports">Sports</option>
+            </select>
+            <button  class = "button" id="getStatsBookBtn">Get Statistics of Books</button>
+        </div>
+        <h1>Student Category Statistics</h1>
+        <div id="statisticsDiv">
+            <button class = "button" id="getStudentStatisticsBtn">See Number of Students of Each Category</button>
+        </div>
+        <div class="arrays-container">
+            <div class="array" id="BookstatisticsTable" style="display:none;" ><table></table></div>
+            <div class="array" id="StudentstatisticsTable" style="display:none;" ><table></table></div>
+        </div>
+        </div>
+        <br>
+        <div id ="forcssstat2">
+            <h1>Library Book Statistics</h1>
+            <button class ="button" id="BookBtn">Number of books per Library</button>
+            <div id="bookCountsTables">
+            <div id="individualBookCountsTable"></div>
+            <div id="totalBookCountsTable"></div>
+        </div>
+         </div>
+         <script src="script4.js"></script>
+         <button class="button" id="logout-butt" onclick="logout();">Logout</button>
+         <div class="footer">
+             <h1>Useful Links</h1>
+             <h2>Book Information</h2>
+             <ul>
+                 <li><a href="https://www.goodreads.com/" class="link-white">Goodreads</a></li>
+                 <li><a href="https://www.librarything.com/" class="link-white">LibraryThing</a></li>
+                 <li><a href="https://www.amazon.com/books-used-books-textbooks/b/ref=nav_shopall_bo_t3?ie=UTF8&node=283155" class="link-white">Amazon</a></li>
+                 <li><a href="https://www.literature-map.com/" class="link-white">Literature Map</a></li>
+                 <li><a href="https://www.bookfinder.com/" class="link-white">BookFinder.com</a></li>
+                 <li><a href="https://fivebooks.com/" class="link-white">Five Books</a></li>
+                 <li><a href="https://www.cbr.com/" class="link-white">Comic Book Resources</a></li>
+                 <li><a href="https://www.indiebound.org/indie-store-finder" class="link-white">IndieBound</a></li>
+                 <li><a href="https://www.addall.com/" class="link-white">AddALL</a></li>
+                 <li><a href="https://www.alibris.com/" class="link-white">Alibris</a></li>
+                 <li><a href="http://onlinebooks.library.upenn.edu/search.html" class="link-white">UPenn's Online Books Page</a></li>
+                 <li><a href="https://www.powells.com/" class="link-white">Powell's Books</a></li>
+             </ul>
+             <h2>University of Crete</h2>
+             <ul>
+                 <li><a href="https://www.uoc.gr/" class="link-white">Official University of Crete Website</a></li>
+                 <li><a href="https://en.wikipedia.org/wiki/University_of_Crete" class="link-white">University of Crete - Wikipedia</a></li>
+                 <li><a href="https://www.csd.uoc.gr/" class="link-white">Computer Science Department</a></li>
+                 <li><a href="https://www.csd.uoc.gr/CSD/index.jsp?content=courses_catalog&openmenu=demoAcc3&lang=gr&course=94" class="link-white">HY359</a></li>
+             </ul>
+             <h1 id = "xx">ΧΡΗΣΤΕΣ</h1>
+             <div id="usernamesContainer"></div>
+         </div>
+    </body>
+</html>

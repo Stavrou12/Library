@@ -1,0 +1,73 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28 Αυγ 2023, 12:39:21 μμ
+    Author     : gnnss
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("images/ikona1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.content {
+    padding: 20px;
+    font-family: "Arial", Times, serif;
+    color:#e7a66e;
+}
+
+.footer {
+    font-family: "Arial", Times, serif;
+    color:#e7a66e;
+    background-color: rgba(0, 0, 0, .59);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    font-size: 18px;
+    border: 3px solid;
+    border-color: #e7a66e;
+    border-radius: 10px;
+}
+#xx{
+    font-size: 17px;
+    color: orangered;
+}
+
+.link-white {
+    color: white;
+}
+
+
+#seeBooksButtonGuest{
+    background-color:#e7a66e;
+    font-size: 16px;
+    border:none;
+    border-radius: 12px;
+    padding: 8px 24px;
+}
+
+#booksContainerGuest{
+    font-family: "Arial", Times, serif;
+    background-color: rgba(0, 0, 0, .58);
+    color : white;
+    font-size: 16px;
+    border-radius: 12px;
+    padding: 8px 24px;
+    border: 3px solid;
+    border-color: #e7a66e;
+    margin-right: 20%; 
+
+}
+
+#usernamesContainer{
+    color:white;
+}

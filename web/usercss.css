@@ -1,0 +1,197 @@
+body {
+    background-image: url("images/ikona1.jpg");
+    color:white;
+}
+legend {
+    color: black;
+    background-color:#e7a66e;
+    border-radius: 10px;
+    padding: 5px 8px;
+}
+fieldset {
+    border-color: #e7a66e;
+    background-color: rgba(0, 0, 0, .59);
+}
+.button{
+    background-color:#e7a66e;
+    font-size: 14px;
+
+    border-color: black;
+    border-radius: 12px;
+    padding: 5px 24px;
+}
+
+.button:hover {
+
+    border-color:black;
+    background-color: #2c5039; 
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+th {
+    background-color: #e7a66e;
+    color: black;
+}
+
+#searchForm {
+    background-color: rgba(0, 0, 0, 0.59);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    color: white;
+}
+
+#searchForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#searchForm input[type="text"],
+#searchForm input[type="number"]{
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+}
+
+#searchForm input[type="submit"] {
+    background-color: #e7a66e;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+}
+
+#searchForm input[type="submit"]:hover {
+    background-color: #2c5039;
+}
+
+#searchForm span {
+    color: #e7a66e;
+    font-size: 14px;
+}
+
+#resultsReview{
+    background-color: rgba(0, 0, 0, 0.59);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    color: white;
+}
+
+#reviewsContainer{
+    background-color: rgba(0, 0, 0, 0.59);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    color: white;
+}
+
+
+#reviewForm {
+    background-color: rgba(0, 0, 0, 0.59);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    color: white;
+}
+
+#reviewFormlabel {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#reviewForm input[type="text"],
+#reviewForm input[type="number"]{
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+}
+
+#reviewForm input[type="submit"] {
+    background-color: #e7a66e;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+}
+
+#reviewForm input[type="submit"]:hover {
+    background-color: #2c5039;
+}
+
+#reviewForm span {
+    color: #e7a66e;
+    font-size: 14px;
+}
+
+#results{
+    background-color: rgba(0, 0, 0, 0.59);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    color: white;
+}
+
+.footer {
+    font-family: "Arial", Times, serif;
+    color:#e7a66e;
+    background-color: rgba(0, 0, 0, .59);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    font-size: 18px;
+    border: 3px solid;
+    border-color: #e7a66e;
+    border-radius: 10px;
+}
+#xx{
+    font-size: 17px;
+    color: orangered;
+}
+
+.link-white {
+    color: white;
+}
